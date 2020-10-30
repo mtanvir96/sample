@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stats-manager-service
+spec:
+  selector:
+    app: stats-manager
+  ports:
+  - protocol: "TCP"
+    port: 5001
+    targetPort: 5000
+  type: LoadBalancer
+
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: stats-manager
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: stats-manager
+    spec:
+      containers:
+      - name: stats-manager
+        image: stats-manager:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
