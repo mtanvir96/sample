@@ -1,5 +1,5 @@
 # How to run the service
-  - git clone  ...
+  - git clone  https://github.com/mtanvir96/sample.git
   - docker build -t stats-manager -f Dockerfile .
   - docker run -p 5001:5000 -d stats-manager
   - Run "docker ps" to verify that the container is running
